@@ -1,7 +1,5 @@
 blank_position = 9;
 
- document.addEventListener("keydown", keyboardMove, false);
-
 function adjacent(position1, position2) {
 	if ((position1 == position2 + 1 && position1 != 4 && position1 != 7)
 		|| (position1 == position2 - 1 && position1 != 3 && position1 != 6)
@@ -28,19 +26,46 @@ function tileBetween(position1, position2) {
 	}	
 }
 
+function moveDirection(tile) {
+
+}
+
+function slideOntoBlank(position) {
+	$(document).ready(function() {
+		var tile = $(".position_" + position)
+
+		if (position == blank_position + 1 && position != 4 && blank_position != 7) {
+			$(document).ready(function() {
+				tile.slideRight("slow", function() {
+					swapBlankFor(position)
+				})
+			})
+		}
+		else if	(position == blank_position - 1 && position != 3 && position != 6) {
+			return 'left';
+		}
+		else if (position == blank_position + 3) {
+			return 'down';
+		}
+		else if (position == blank_position - 3) {
+			return 'up';
+		}
+}
+
 function swapBlankFor(position) {
-	document.getElementsByClassName("position_" + position)[0].className = "tile position_" + blank_position;
+	$(document).ready(function(){
+		$(".position_" + position).attr("class", "tile position_" + blank_position);
+	})
 	blank_position = position;
 }
 
 function move(div) {
 	var class_name = div.className;
 	var tile_position = parseInt(class_name.substring(14));
-
-	if (adjacent(tile_position, blank_position) == true) {
+	if (adjacent(tile_position, blank_position)) {
 		swapBlankFor(tile_position);
 	}
-	else if (twoTilesAway(tile_position, blank_position) == true) {
+	else if (twoTilesAway(tile_position, blank_position)) {
 		var middle_position = tileBetween(tile_position, blank_position);
 		swapBlankFor(middle_position);
 		swapBlankFor(tile_position);
@@ -54,7 +79,7 @@ function getRandomIntegerBetween(min, max) {
 function randomize(n) {
 	for (var i = 0; i < n; i++) {
 		random_number = getRandomIntegerBetween(1, 9);
-		if (adjacent(random_number, blank_position) == true) {
+		if (adjacent(random_number, blank_position)) {
 			swapBlankFor(random_number);
 		}
 	}
@@ -65,40 +90,6 @@ function inRange(position) {
 		return true;
 	}
 }
-
-function keyboardMove(event) {
-	var key = event.keyCode;
-	var tile_position;
-	if (key == 87) {
-		tile_position = blank_position - 3;
-	}
-	else if (key == 83) {
-		tile_position = blank_position + 3;
-	}
-	else if (key == 65) {
-		tile_position= blank_position - 1;
-	}
-	else if (key == 68) {
-		tile_position= blank_position + 1;
-	}
-	if(adjacent(tile_position, blank_position) == true) {
-		swapBlankFor(tile_position);
-	}
-}
-
-function changeTilePicture(div) {
-	// document.getElementById("background").src = div.src;
-	document.getElementById("top_left").src = div.src;
-	document.getElementById("top_center").src = div.src;
-	document.getElementById("top_right").src = div.src;
-	document.getElementById("middle_left").src = div.src;
-	document.getElementById("middle_center").src = div.src;
-	document.getElementById("middle_right").src = div.src;
-	document.getElementById("bottom_left").src = div.src;
-	document.getElementById("bottom_center").src = div.src;
-	document.getElementById("bottom_right").src = div.src;
-}
-
 
 
 
