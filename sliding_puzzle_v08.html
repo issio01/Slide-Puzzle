@@ -1,0 +1,90 @@
+<!-- 
+Things to implement:
+sliding tiles (jquery)
+timer
+victory screen w/ timer
+solver 
+
+ -->
+<!-- 
+Done:
+Two tile move
+randomizer
+arrow keys move
+hover
+thumbnail links to diff pictures
+
+ -->
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="sliding_puzzle_v08.css">
+<script src="sliding_puzzle_v08.js"></script>
+
+<body>
+
+<div style="
+            <!-- border:1px solid black; --> 
+            height:560px; 
+            width:710px;">
+
+<div id="border">
+
+<!-- <img id="background" src="cafewallspiral95.gifx" alt=""/>
+ --> 
+ 	<div class="tile position_1" onclick="move(this)"/>
+  	<img id="top_left" src="cafewallspiral95.gifx" alt=""/>
+    <p class="text">1</p>
+	</div>
+ 	<div class="tile position_2" onclick="move(this)"/>
+ 		<img id="top_center" src="cafewallspiral95.gifx" alt="2"/>
+  	<p class="text">2</p>
+  </div>
+ 	<div class="tile position_3" onclick="move(this)"/>
+ 		<img id="top_right" src="cafewallspiral95.gifx" alt="3"/>
+  	<p class="text">3</p>
+  </div>
+ 	<div class="tile position_4" onclick="move(this)"/>
+ 		<img id="middle_left" src="cafewallspiral95.gifx" alt="4"/>
+  	<p class="text">4</p>
+  </div>
+ 	<div class="tile position_5" onclick="move(this)"/>
+ 		<img id="middle_center" src="cafewallspiral95.gifx" alt="5"/>
+  	<p class="text">5</p>
+  </div>
+ 	<div class="tile position_6" onclick="move(this)"/>
+ 		<img id="middle_right" src="cafewallspiral95.gifx" alt="6"/>
+  	<p class="text">6</p>
+  </div>
+ 	<div class="tile position_7" onclick="move(this)"/>
+ 		<img id="bottom_left" src="cafewallspiral95.gifx" alt="7"/>
+  	<p class="text">7</p>
+  </div>
+ 	<div class="tile position_8" onclick="move(this)"/>
+ 		<img id="bottom_center" src="cafewallspiral95.gifx" alt="8"/>
+  	<p class="text">8</p>
+  </div>
+</div>
+
+<br><button onclick="randomize(500)">Randomize Tiles</button>
+
+<div id="thumbnail_box">
+  <div class="thumbnail" src="" alt="" onclick="changeTilePicture(this)">
+  <p class="thumbnail_text">123</p> 
+  </div> 
+  <img src="cafewallspiral95.gif" alt="" class="thumbnail" onclick="changeTilePicture(this)"/>
+  <img src="spiral.jpg" alt="" class="thumbnail_img" onclick="changeTilePicture(this)"/>
+</div>
+
+</div>
+
+
+
+<div id="info">
+Sliding Puzzle by John Poliquin (johndpoliquin@gmail.com)
+</div>
+
+</body>
+</html>
+
+

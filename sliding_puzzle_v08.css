@@ -1,0 +1,176 @@
+img {
+	width:506px;
+	height:506px;
+}
+
+#border {
+	border:3px solid black;
+	padding:1px;
+	width:506px;
+	height:506px;
+	position:relative;
+}
+
+.tile {
+	width:166px;
+	height:166px;
+	color:black;
+	border:1px solid black;
+	position:absolute;
+}
+
+.tile:hover {
+	opacity:0.5;
+	background-color:rgb(240,240,240);
+}
+
+.text {
+	color:black;
+	line-height:50px;
+	text-align:center;
+	opacity:1.0;
+	font-size:4em;
+}
+
+#thumbnail_box {
+	width:102px;
+	height:400px;
+	position:relative;
+	left:600px;
+	bottom:540px;
+/* 	border:1px solid black; */
+}
+
+.thumbnail {
+	width:100px;
+	height:100px;
+	position:relative;
+	margin:1px 0px 9px 0px;
+	border:1px solid black;
+}
+
+.thumbnail_img {
+	width:100px;
+	height:100px;
+	position:relative;
+	margin:1px 0px 1px 0px;
+	border:1px solid black;
+	bottom:6px	
+}
+
+.thumbnail_text {
+	color:black;
+	text-align:center;
+	font-size:2em;
+}
+
+
+div.position_1 {
+	left:1px;
+	top:1px;
+}
+div.position_2 {
+	left:170px;
+	top:1px;
+}
+div.position_3 {
+	left:339px;
+	top:1px;
+}
+div.position_4 {
+	left:1px;
+	top:170px;
+}
+div.position_5 {
+	left:170px;
+	top:170px;
+}
+div.position_6 {
+	left:339px;
+	top:170px;
+}
+div.position_7 {
+	left:1px;
+	top:339px;
+}
+div.position_8 {
+	left:170px;
+	top:339px;
+}
+div.position_9 {
+	left:339px;
+	top:339px;
+}
+
+
+
+img#top_left {
+	position:absolute;
+	clip:rect(0px, 166px, 166px, 0px);
+	left:0;
+}
+
+img#top_center{
+	position:absolute;
+	clip:rect(0px, 335px, 166px, 169px);
+	left:0;
+	margin: 0px 0px 0px -169px;
+
+}
+img#top_right {
+	position:absolute;
+	clip:rect(0px, 505px,166px, 339px);
+	left:0;
+	margin: 0px 0px 0px -339px;
+}
+
+img#middle_left {
+	position:absolute;
+	clip:rect(169px, 166px, 335px, 0px);
+	left:0;
+	margin: -169px 0px 0px 0px;
+}
+img#middle_center {
+	position:absolute;
+	clip:rect(169px, 335px, 335px, 169px);
+	left:0;
+	margin: -169px 0px 0px -169px;
+}
+img#middle_right {
+	position:absolute;
+	clip:rect(169px, 505px, 335px, 339px);
+	left:0;
+	margin: -169px 0px 0px -339px;
+}
+
+img#bottom_left {
+	position:absolute;
+	clip:rect(339px, 166px, 505px, 1px);
+	left:0;
+	margin: -339px 0px 0px 0px;
+}
+img#bottom_center {
+	position:absolute;
+	clip:rect(339px, 335px, 505px, 169px);
+	left:0;
+	margin: -339px 0px 0px -169px;
+}
+img#bottom_right {
+	position:absolute;
+	clip:rect(339px, 505px, 505px, 339px);
+	left:0;
+	margin: -339px 0px 0px -339px;
+}
+
+
+
+#background {
+	position:absolute;
+	opacity: 0.2;
+}
+
+#info {
+	position:fixed;
+	bottom:0;
+	right:0;
+}
