@@ -4,7 +4,9 @@ img {
 }
 
 #border {
-	border:3px solid black;
+	border-width:3px; 
+	border-style:solid; 
+	border-color:black;
 	padding:1px;
 	width:506px;
 	height:506px;

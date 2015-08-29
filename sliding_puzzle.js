@@ -1,68 +1,66 @@
-blank_position = 9;
+var blank_position = 9;
 
 $(document).ready(function() {
 	$(".tile").click(function() {
+		// alert(getTilePosition(this) + " " + blank_position);
 		move(this);
-	})
-})
+	});
 
-$(document).ready(function() {
-	$("#randomizer").click(function() {
-		randomize(500);
-	})
-})
+	$("#randomizer").on("click", function() {
+		randomize(5000);
+	});
 
-$(document).ready(function() {
 	$(".thumbnail").click(function(){
-		$("#top_left").attr("src", $(this).attr("src"));
-		$("#top_center").attr("src", $(this).attr("src"));
-		$("#top_right").attr("src", $(this).attr("src"));
-		$("#middle_left").attr("src", $(this).attr("src"));
-		$("#middle_center").attr("src", $(this).attr("src"));
-		$("#middle_right").attr("src", $(this).attr("src"));
-		$("#bottom_left").attr("src", $(this).attr("src"));
-		$("#bottom_center").attr("src", $(this).attr("src"));
-		$("#bottom_right").attr("src", $(this).attr("src"));
-	})
-})
+			$("#top_left").attr("src", $(this).attr("src"));
+			$("#top_center").attr("src", $(this).attr("src"));
+			$("#top_right").attr("src", $(this).attr("src"));
+			$("#middle_left").attr("src", $(this).attr("src"));
+			$("#middle_center").attr("src", $(this).attr("src"));
+			$("#middle_right").attr("src", $(this).attr("src"));
+			$("#bottom_left").attr("src", $(this).attr("src"));
+			$("#bottom_center").attr("src", $(this).attr("src"));
+			$("#bottom_right").attr("src", $(this).attr("src"));
+	});
 
-$(document).keydown(function(event) {
-	var key = event.which;
-	var tile_position;
-	if (key == 87) {
-		tile_position = blank_position - 3;
-	}
-	else if (key == 83) {
-		tile_position = blank_position + 3;
-	}
-	else if (key == 65) {
-		tile_position = blank_position - 1;
-	}
-	else if (key == 68) {
-		tile_position = blank_position + 1;
-	}
-	tile = getTile(tile_position);
-	move(tile);
-})
+	$(document).keydown(function(event) {
+		var key = event.which;
+		var tile_position;
+		if (key == 87) {
+			tile_position = blank_position - 3;
+		}
+		else if (key == 83) {
+			tile_position = blank_position + 3;
+		}
+		else if (key == 65) {
+			tile_position = blank_position - 1;
+		}
+		else if (key == 68) {
+			tile_position = blank_position + 1;
+		}
+		var tile = getTile(tile_position);
+		move(tile);
+	});
+});
 
 function adjacent(position1, position2) {
-	if ((position1 == position2 + 1 && position1 != 4 && position1 != 7)
-		|| (position1 == position2 - 1 && position1 != 3 && position1 != 6)
-		|| position1 == position2 + 3
-		|| position1 == position2 - 3) {
+	if ((position1 == position2 + 1 && position1 != 4 && position1 != 7) || 
+		(position1 == position2 - 1 && position1 != 3 && position1 != 6) || 
+		position1 == position2 + 3 || 
+		position1 == position2 - 3) {
 		return true;
 	}
 }
 
  function twoTilesAway(position1, position2) {
-	if (position1 == position2 + 6
-		|| position1 == position2 - 6
-		|| position1 == position2 + 2 && (position1 == 3 || position1 == 6 || position1 == 9)
-		|| position1 == position2 - 2 && (position1 == 1 || position1 == 4 || position1 == 7)) {
+	if (position1 == position2 + 6 || 
+		position1 == position2 - 6 || 
+		position1 == position2 + 2 && (position1 == 3 || position1 == 6 || position1 == 9) || 
+		position1 == position2 - 2 && (position1 == 1 || position1 == 4 || position1 == 7)) {
 		return true;
 	}
 }
 
+// Returns the tile between two tiles. BEWARE: will only work if twoTilesAway == true
 function tileBetween(position1, position2) {
 	for (var i = 1; i <= 9; i++) {	
 		if (adjacent(position1, i) && adjacent(position2, i)) {
@@ -86,7 +84,7 @@ function swapBlankFor(position) {
 }
 
 function slideTileToBlank(position) {
-	var tile = getTile(position)
+	var tile = getTile(position);
 	if (position == blank_position + 1 && position != 4 && position != 7) {
 		tile.animate({left:"-=169px"}, "fast");
 	}
@@ -103,7 +101,7 @@ function slideTileToBlank(position) {
 
 function move(div) {
 	var tile_position = getTilePosition(div);
-	if (adjacent(tile_position, blank_position)) {
+	if (adjacent(tile_position, blank_position) && inRange(tile_position)) {
 		slideTileToBlank(tile_position);
 		swapBlankFor(tile_position);
 	}
@@ -111,7 +109,7 @@ function move(div) {
 		var middle_position = tileBetween(tile_position, blank_position);
 		slideTileToBlank(middle_position);
 		swapBlankFor(middle_position);
-		slideTileToBlank(tile_position)
+		slideTileToBlank(tile_position);
 		swapBlankFor(tile_position);
 	}
 }
@@ -123,8 +121,9 @@ function getRandomIntegerBetween(min, max) {
 
 // Randomizes the Tiles; ~30% chance that it will move a tile per each random number/iteration
 function randomize(n) {
+	$(".tile").removeAttr("style");
 	for (var i = 0; i < n; i++) {
-		random_number = getRandomIntegerBetween(1, 9);
+		var random_number = getRandomIntegerBetween(1,9);
 		if (adjacent(random_number, blank_position)) {
 			swapBlankFor(random_number);
 		}
